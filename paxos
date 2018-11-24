@@ -1,0 +1,6 @@
+#define ACCEPTORS 3
+#define PROPOSERS 5
+#define COORDINATORS 3
+#define MAJORITY 2
+
+chan requestvote = 
