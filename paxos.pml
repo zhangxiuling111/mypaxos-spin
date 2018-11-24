@@ -14,7 +14,7 @@ chan acceptorpre[ACCEPTORS] = [100] of {byte,byte};     /*acceptor用来接收pr
 chan acceptoracc[ACCEPTORS] = [100] of {byte,byte, byte};     /*acceptor用来接收acceptor请求*/
 chan promise[COORDINATORS] = [100] of {byte, byte,byte,byte}            /*coordinator向acceptor?????round???求后用来接收promise信息*/
 chan learnacc = [100] of {byte,byte,byte}                     /*acceptor接受?个value后发送到???道用来提醒learner*/
-chan learned = [100] of {byte,byte}                          /*learner对同?个value计数超过majority，表示learn到一个value之后则向???道发????*/
+chan learned = [100] of {byte,byte}                          /*learner对同一个value计数超过majority，表示learn到一个value之后则向???道发????*/
 
 inline laccept(id,round, value){
 	byte i;
