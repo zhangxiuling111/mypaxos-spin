@@ -7,14 +7,14 @@ byte leaderno = 0
 bool leaderselected = false;
 bool progress = false;
 
-chan coorproposal[COORDINATORS] = [100] of {byte,byte}        /*?有的proposer都先将proposal????????道给coordinator*/
-chan preack[COORDINATORS] = [100] of {byte}                 /*当acceptor的当前round大于coordinator???的round值时，acceptor????coordinator更大的round?*/
+chan coorproposal[COORDINATORS] = [100] of {byte,byte}        /*所有的proposer都先将proposal发送到该通道给coordinator*/
+chan preack[COORDINATORS] = [100] of {byte}                 /*当acceptor的当前round大于coordinator的当前的round值时，acceptor提醒coordinator更大的round值*/
 chan accack[COORDINATORS] = [100] of {byte}
 chan acceptorpre[ACCEPTORS] = [100] of {byte,byte};     /*acceptor用来接收prepare信息*/
 chan acceptoracc[ACCEPTORS] = [100] of {byte,byte, byte};     /*acceptor用来接收acceptor请求*/
-chan promise[COORDINATORS] = [100] of {byte, byte,byte,byte}            /*coordinator向acceptor?????round???求后用来接收promise信息*/
-chan learnacc = [100] of {byte,byte,byte}                     /*acceptor接受?个value后发送到???道用来提醒learner*/
-chan learned = [100] of {byte,byte}                          /*learner对同一个value计数超过majority，表示learn到一个value之后则向???道发????*/
+chan promise[COORDINATORS] = [100] of {byte, byte,byte,byte}            /*coordinator向acceptor加入round的请求后用来接收promise信息*/
+chan learnacc = [100] of {byte,byte,byte}                     /*acceptor接受一个value后发送到该通道用来提醒learner*/
+chan learned = [100] of {byte,byte}                          /*learner对同一个value计数超过majority，表示learn到一个value之后则向通道发送被接收的value*/
 
 inline laccept(id,round, value){
 	byte i;
